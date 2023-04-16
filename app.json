@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "whatsappclone",
+    "name": "blockmate",
     "slug": "whatsappclone",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#BFDFD4"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -18,6 +18,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.skg.blockmate",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -25,6 +27,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "648ba9b6-d36c-4334-a460-06ad359bab4d"
+      }
     }
   }
 }

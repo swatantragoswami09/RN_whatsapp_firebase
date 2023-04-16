@@ -1,12 +1,20 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Button, Settings, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  Settings,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
 import "react-native-gesture-handler";
 
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import AppNavigator from "./navigation/AppNavigator";
+import { LinearGradient } from "expo-linear-gradient";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -46,9 +54,15 @@ export default function App() {
   if (!appIsLoaded) return null;
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayout}>
-      <AppNavigator />
-    </GestureHandlerRootView>
+    // <ImageBackground
+    //   source={{
+    //     uri: "https://media.geeksforgeeks.org/wp-content/uploads/20220217151648/download3.png",
+    //   }}
+    // >
+      <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayout}>
+        <AppNavigator />
+      </GestureHandlerRootView>
+    // </ImageBackground>
   );
 }
 
