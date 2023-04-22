@@ -2,14 +2,14 @@ import {
   validateEmail,
   validatePassword,
   validateString,
-} from "../validationConstrats";
+} from "../validationConstraints";
 
-export const validateInput = (inputId, inputValue) => {
+export const validateInput = async (inputId, inputValue) => {
   if (inputId === "firstName" || inputId === "lastName") {
-    return validateString(inputId, inputValue);
+    return await validateString(inputId, inputValue.toLowerCase());
   } else if (inputId === "email") {
-    return validateEmail(inputId, inputValue);
+    return await validateEmail(inputId, inputValue.toLowerCase());
   } else if (inputId === "password") {
-    return validatePassword(inputId, inputValue);
+    return await validatePassword(inputId, inputValue);
   }
 };

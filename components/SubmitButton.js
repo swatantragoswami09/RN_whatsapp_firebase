@@ -3,6 +3,7 @@ import React from "react";
 import colors from "../constants/colors";
 
 const SubmitButton = (props) => {
+  console.log("props.disabled =>", props.disabled);
   const enabledbgColor = props.color || colors.primary;
   const disaledByColor = colors.lightGrey;
   const bgColor = props.disabled ? disaledByColor : enabledbgColor;

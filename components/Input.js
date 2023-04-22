@@ -5,6 +5,7 @@ import colors from "../constants/colors";
 import { Feather } from "@expo/vector-icons";
 
 const Input = (props) => {
+  console.log("id=>", props.id);
   const onChangeText = (text) => {
     props.onInputChange(props.id, text);
   };
@@ -20,9 +21,10 @@ const Input = (props) => {
           style={styles.icon}
         />
         <TextInput
-        {...props}
+          // {...props}
           style={styles.input}
           onChangeText={(text) => onChangeText(text)}
+          placeholder={props.placeholder}
         />
 
         {props.errorText && (

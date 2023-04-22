@@ -1,5 +1,6 @@
 import {
   Button,
+  ImageBackground,
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
@@ -23,18 +24,27 @@ const ChatScreen = () => {
   }, [messageText]);
 
   return (
-    <KeyboardAvoidingView style={{ flex: 1 }}
-     behavior={Platform.OS === "ios" ? "padding" : undefined }
-     keyboardVerticalOffset={100}
+    <LinearGradient
+      style={{
+        flex: 1,
+      }}
+      colors={["#f78ca0", "#f9748f", "#fd868c", "#fe9a8b"]}
     >
-      <LinearGradient
-        style={{
-          flex: 1,
-        }}
-        colors={["#f78ca0", "#f9748f", "#fd868c", "#fe9a8b"]}
-      >
-        <SafeAreaView edges={["right", "left"]}>
+      <SafeAreaView edges={["right", "left"]} style={styles.container}>
+        <KeyboardAvoidingView
+          style={{ flex: 1 }}
+          behavior={Platform.OS === "ios" ? "padding" : undefined}
+          keyboardVerticalOffset={100}
+        >
+          <LinearGradient
+            style={{
+              flex: 1,
+            }}
+            colors={["#1FD1F9", "#f9748f", "#fd868c", "#fe9a8b"]}
+          ></LinearGradient>
+
           <View style={styles.inputContainer}>
+            {/* plus button */}
             <TouchableOpacity
               style={styles.mediaButton}
               onPress={() => console.log("Pressed")}
@@ -42,6 +52,7 @@ const ChatScreen = () => {
               <AntDesign name="pluscircle" size={24} color={colors.white} />
             </TouchableOpacity>
 
+            {/* Input */}
             <TextInput
               onChangeText={(text) => setMessageText(text)}
               value={messageText}
@@ -66,9 +77,9 @@ const ChatScreen = () => {
               </TouchableOpacity>
             )}
           </View>
-        </SafeAreaView>
-      </LinearGradient>
-    </KeyboardAvoidingView>
+        </KeyboardAvoidingView>
+      </SafeAreaView>
+    </LinearGradient>
   );
 };
 
@@ -83,9 +94,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inputContainer: {
-    // position: "absolute",
-    top: "160%",
-
     flexDirection: "row",
     paddingVertical: 8,
     paddingHorizontal: 10,

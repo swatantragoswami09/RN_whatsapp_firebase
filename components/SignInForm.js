@@ -1,5 +1,5 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { useReducer } from "react";
+import React, { useCallback, useReducer } from "react";
 import Input from "./Input";
 import SubmitButton from "./SubmitButton";
 import colors from "../constants/colors";
@@ -7,58 +7,50 @@ import {
   validateEmail,
   validatePassword,
   validateString,
-} from "../utils/validationConstrats";
+} from "../utils/validationConstraints";
 import { validateInput } from "../utils/actions/formActions";
-
-const reducer = (state, action) => {
-  const { validationResult } = action;
-  state.formIsValid = validationResult === undefined;
-  return {
-    ...state,
-    formIsValid: validationResult === undefined,
-  };
-};
-const initialState = {
-  inputValidates: {
-    firstName: false,
-    lastName: false,
-    email: false,
-    password: false,
-  },
-  formIsValid: false,
-};
+import { reducer } from "../utils/reducers/formReducers";
+import { initialLoginState } from "../utils/initialState";
 
 const SignInForm = (props) => {
-  const [formState, dispatchFormState] = useReducer(reducer, initialState);
-  const inputChangeHandler = (inputId, inputValue) => {
-    const result = validateInput(inputId, inputValue);
-    dispatchFormState({ validationResult: result });
-  };
+  const [formState, dispatchFormState] = useReducer(reducer, initialLoginState);
+  console.log("formState=>", formState);
+  const inputChangeHandler = useCallback(
+    async (inputId, inputValue) => {
+      const result = await validateInput(inputId, inputValue);
+      console.log("result=>", result);
+      dispatchFormState({
+        inputId,
+        validationResult: result,
+      });
+    },
+    [dispatchFormState]
+  );
 
   return (
-    // <View style={styles.container}>
-    //   </View>
     <>
       <Input
-        // id="email"
+        id="email"
         label="Email"
         keyboardType="email-address"
         icon="mail"
         onInputChange={inputChangeHandler}
+        errorText={formState.inputValidities["email"]}
       />
       <Input
-        // id="password"
+        id="password"
         label="Password"
         autoCaptalize="none"
         secureTextEntry
         icon="lock"
         onInputChange={inputChangeHandler}
+        errorText={formState.inputValidities["password"]}
       />
       <SubmitButton
         tittle="Sign up"
         onPress={() => console.log("button pressed")}
         style={{ marginTop: 20 }}
-        disabled={!formState.formIsValid}
+        disabled={!!formState.formIsValid}
       />
     </>
   );
