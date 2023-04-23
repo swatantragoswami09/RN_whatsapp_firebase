@@ -1,4 +1,12 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  ActivityIndicator,
+  Alert,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useCallback, useReducer } from "react";
 import Input from "./Input";
 import SubmitButton from "./SubmitButton";
@@ -13,6 +21,7 @@ import { reducer } from "../utils/reducers/formReducers";
 import { initialLoginState } from "../utils/initialState";
 import { signIn } from "../utils/actions/authActions";
 import { useDispatch } from "react-redux";
+
 
 const SignInForm = (props) => {
   const dispatch = useDispatch();
@@ -47,8 +56,8 @@ const SignInForm = (props) => {
         formState.inputValues.email,
         formState.inputValues.password
       );
-      dispatch(action);
       setError(null);
+      await dispatch(action);
     } catch (error) {
       setError(error.message);
       setIsLoading(false);
@@ -82,7 +91,7 @@ const SignInForm = (props) => {
         />
       ) : (
         <SubmitButton
-          tittle="Sign up"
+          tittle="Sign in"
           onPress={authHandler}
           style={{ marginTop: 20 }}
           disabled={!!formState.formIsValid}
