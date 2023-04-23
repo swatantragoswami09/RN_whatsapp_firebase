@@ -1,4 +1,10 @@
 export const initialRegisterState = {
+  inputValues: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  },
   inputValidities: {
     firstName: false,
     lastName: false,
@@ -9,6 +15,10 @@ export const initialRegisterState = {
 };
 
 export const initialLoginState = {
+  inputValues: {
+    email: "",
+    password: "",
+  },
   inputValidities: {
     email: false,
     password: false,

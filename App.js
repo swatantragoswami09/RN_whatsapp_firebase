@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Text,
   View,
+  LogBox,
 } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
@@ -15,6 +16,8 @@ import "react-native-gesture-handler";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import AppNavigator from "./navigation/AppNavigator";
 import { LinearGradient } from "expo-linear-gradient";
+
+LogBox.ignoreAllLogs();
 
 SplashScreen.preventAutoHideAsync();
 
@@ -59,9 +62,9 @@ export default function App() {
     //     uri: "https://media.geeksforgeeks.org/wp-content/uploads/20220217151648/download3.png",
     //   }}
     // >
-      <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayout}>
-        <AppNavigator />
-      </GestureHandlerRootView>
+    <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayout}>
+      <AppNavigator />
+    </GestureHandlerRootView>
     // </ImageBackground>
   );
 }

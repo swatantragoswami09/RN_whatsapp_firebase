@@ -29,7 +29,7 @@ const Input = (props) => {
 
         {props.errorText && (
           <View style={styles.errorContainer}>
-            <Text style={styles.errorText}>Some error text</Text>
+            <Text style={styles.errorText}>{props.errorText}</Text>
           </View>
         )}
       </View>

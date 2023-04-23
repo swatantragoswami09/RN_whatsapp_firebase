@@ -15,6 +15,7 @@ import { initialLoginState } from "../utils/initialState";
 const SignInForm = (props) => {
   const [formState, dispatchFormState] = useReducer(reducer, initialLoginState);
   console.log("formState=>", formState);
+
   const inputChangeHandler = useCallback(
     async (inputId, inputValue) => {
       const result = await validateInput(inputId, inputValue);
@@ -22,6 +23,7 @@ const SignInForm = (props) => {
       dispatchFormState({
         inputId,
         validationResult: result,
+        inputValue,
       });
     },
     [dispatchFormState]
