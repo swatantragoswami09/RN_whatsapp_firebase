@@ -21,8 +21,11 @@ import { reducer } from "../utils/reducers/formReducers";
 import { initialRegisterState } from "../utils/initialState";
 import { signUp } from "../utils/actions/authActions";
 import colors from "../constants/colors";
+import { useDispatch, useSelector } from "react-redux";
 
 const SignUpForm = (props) => {
+  const dispatch = useDispatch();
+
   const [error, setError] = React.useState();
   const [isLoading, setIsLoading] = React.useState(false);
   const [formState, dispatchFormState] = useReducer(
@@ -49,21 +52,22 @@ const SignUpForm = (props) => {
     }
   }, [error]);
 
-  const authHandler = async () => {
+  const authHandler = useCallback(async () => {
     try {
       setIsLoading(true);
-      await signUp(
+      const action = signUp(
         formState.inputValues.firstName,
         formState.inputValues.lastName,
         formState.inputValues.email,
         formState.inputValues.password
       );
+      dispatch(action);
       setError(null);
     } catch (error) {
       setError(error.message);
       setIsLoading(false);
     }
-  };
+  }, [dispatch, formState]);
 
   return (
     <>

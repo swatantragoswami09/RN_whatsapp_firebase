@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const screenOptions = {
-  headerShown: true,
+  headerShown: false,
   gestureEnabled: true,
 };
 

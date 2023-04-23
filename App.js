@@ -16,8 +16,12 @@ import "react-native-gesture-handler";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import AppNavigator from "./navigation/AppNavigator";
 import { LinearGradient } from "expo-linear-gradient";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 LogBox.ignoreAllLogs();
+// AsyncStorage.clear();
 
 SplashScreen.preventAutoHideAsync();
 
@@ -57,15 +61,11 @@ export default function App() {
   if (!appIsLoaded) return null;
 
   return (
-    // <ImageBackground
-    //   source={{
-    //     uri: "https://media.geeksforgeeks.org/wp-content/uploads/20220217151648/download3.png",
-    //   }}
-    // >
-    <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayout}>
-      <AppNavigator />
-    </GestureHandlerRootView>
-    // </ImageBackground>
+    <Provider store={store}>
+      <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayout}>
+        <AppNavigator />
+      </GestureHandlerRootView>
+    </Provider>
   );
 }
 
