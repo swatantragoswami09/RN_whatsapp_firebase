@@ -3,6 +3,6 @@ export default StyleSheet.create({
   center: {
     flex: 1,
     justifyContent: "center",
-    alinItems: "center",
+    alignItems: "center",
   },
 });

@@ -15,13 +15,53 @@ import { AntDesign } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { FontAwesome } from "@expo/vector-icons";
 import colors from "../constants/colors";
+import { useSelector } from "react-redux";
+import PageContainer from "../components/PageContainer";
+import Bubble from "../components/Bubble";
+import { createChat } from "../utils/actions/chatActions";
 
-const ChatScreen = () => {
+const ChatScreen = (props) => {
+  const userData = useSelector((state) => state.auth.userData);
+  const storedUsers = useSelector((state) => state.users.storedUsers);
+  const storedChats = useSelector((state) => state.chats.chatsData);
+
+  const [chatUsers, setChatUsers] = React.useState([]);
+
   const [messageText, setMessageText] = React.useState("");
+  const [chatId, setChatId] = React.useState(props.route?.params?.newChatData);
 
-  const sendMessage = React.useCallback(() => {
+  const chatData =
+    (chatId && storedChats(chatId)) || props.route?.params?.newChatData;
+
+  const getChatTitleFromName = () => {
+    const otherUserId = chatUsers.find((uid) => uid !== userData.userId);
+    const otherUserData = storedUsers[otherUserId];
+
+    return (
+      otherUserData && `${otherUserData.firstName} ${otherUserData.lastName}`
+    );
+  };
+  console.log("chatData=>", chatData);
+  React.useEffect(() => {
+    props.navigation.setOptions({
+      headerTitle: getChatTitleFromName(),
+    });
+    setChatUsers(chatData.users);
+  }, [chatUsers]);
+
+  const sendMessage = React.useCallback(async () => {
+    try {
+      let id = chatId;
+      if (id) {
+        // No chat Id. Create the chat
+        id = await createChat(userData.userId, props.route.params.newChatData);
+        console.log("chatId=>", id);
+        setChatId(id);
+      }
+    } catch (error) {}
+
     setMessageText("");
-  }, [messageText]);
+  }, [messageText, chatId]);
 
   return (
     <LinearGradient
@@ -41,7 +81,13 @@ const ChatScreen = () => {
               flex: 1,
             }}
             colors={["#1FD1F9", "#f9748f", "#fd868c", "#fe9a8b"]}
-          ></LinearGradient>
+          >
+            <PageContainer style={{ backgroundColor: "transparent" }}>
+              {chatId && (
+                <Bubble text="This is a new Chat say hi" type="system" />
+              )}
+            </PageContainer>
+          </LinearGradient>
 
           <View style={styles.inputContainer}>
             {/* plus button */}

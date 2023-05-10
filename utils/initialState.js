@@ -4,12 +4,14 @@ export const initialRegisterState = {
     lastName: "",
     email: "",
     password: "",
+    about:''
   },
   inputValidities: {
     firstName: false,
     lastName: false,
     email: false,
     password: false,
+    about: false
   },
   formIsValid: false,
 };

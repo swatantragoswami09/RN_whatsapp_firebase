@@ -67,3 +67,32 @@ export const validatePassword = async (id, value) => {
 
   return validationResult && validationResult[id];
 };
+
+export const validateLength = async (
+  id,
+  value,
+  minLength,
+  maxLength,
+  allowEmpty
+) => {
+  const constraints = {
+    presence: { allowEmpty },
+  };
+
+  if (!allowEmpty || value !== "") {
+    constraints.length = {};
+    if (minLength != null) {
+      constraints.length.minimum = minLength;
+    }
+    if (maxLength != null) {
+      constraints.length.maximum = maxLength;
+    }
+  }
+
+  const validationResult = await validate.async(
+    { [id]: value },
+    { [id]: constraints }
+  );
+
+  return validationResult && validationResult[id];
+};

@@ -1,5 +1,6 @@
 import {
   validateEmail,
+  validateLength,
   validatePassword,
   validateString,
 } from "../validationConstraints";
@@ -11,5 +12,13 @@ export const validateInput = async (inputId, inputValue) => {
     return await validateEmail(inputId, inputValue.toLowerCase());
   } else if (inputId === "password") {
     return await validatePassword(inputId, inputValue);
+  } else if (inputId === "about") {
+    return await validateLength(
+      inputId,
+      inputValue.toLowerCase(),
+      0,
+      150,
+      true
+    );
   }
 };

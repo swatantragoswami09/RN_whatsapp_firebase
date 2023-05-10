@@ -22,7 +22,6 @@ import { initialLoginState } from "../utils/initialState";
 import { signIn } from "../utils/actions/authActions";
 import { useDispatch } from "react-redux";
 
-
 const SignInForm = (props) => {
   const dispatch = useDispatch();
   const [error, setError] = React.useState();

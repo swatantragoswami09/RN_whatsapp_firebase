@@ -16,6 +16,8 @@ import colors from "../constants/colors";
 import { ScrollView } from "react-native-gesture-handler";
 import { LinearGradient } from "expo-linear-gradient";
 
+// #090909
+// #1D1D1D
 const AuthScreen = () => {
   const [isSignUp, setIsSignUp] = React.useState(true);
   return (
@@ -23,7 +25,7 @@ const AuthScreen = () => {
       style={{
         flex: 1,
       }}
-      colors={["#F6F6F6", "#BFDFD4", "#448971", "#000000"]}
+      colors={["#F6F6F6", "#BFDFD4", "#448971", "#1D1D1D"]}
     >
       <SafeAreaView style={{ flex: 1 }}>
         <PageContainer>
