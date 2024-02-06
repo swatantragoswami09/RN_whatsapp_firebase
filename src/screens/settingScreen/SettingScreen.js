@@ -17,6 +17,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { ProfileImage, SubmitButton } from "../../components";
 
 import { Input, PageContainer, PageTitle } from '../../components'
+import styles from './Styles'
 
 const SettingScreen = () => {
   const dispatch = useDispatch();
@@ -77,77 +78,75 @@ const SettingScreen = () => {
   return (
     <PageContainer>
       <PageTitle>Settings</PageTitle>
-      <ScrollView>
-        <ProfileImage
-          size={80}
-          userId={userData.userId}
-          uri={userData.profilePicture}
-          showEditButton={true}
+      <ProfileImage
+        size={30}
+        userId={userData.userId}
+        uri={userData.profilePicture}
+        showEditButton={true}
+      />
+      <Input
+        autoCaptalize="none"
+        id="firstName"
+        label="First name"
+        icon="user"
+        placeholder="ram"
+        onInputChange={inputChangeHandler}
+        errorText={formState.inputValidities["firstName"]}
+        initialValue={userData.lastName}
+      />
+      <Input
+        id="lastName"
+        label="Last name"
+        icon="user"
+        placeholder="goswami"
+        onInputChange={inputChangeHandler}
+        errorText={formState.inputValidities["lastName"]}
+        initialValue={userData.firstName}
+      />
+      <Input
+        id="email"
+        label="Email"
+        icon="mail"
+        placeholder="skg@gmail.com"
+        keyboardType="email-address"
+        onInputChange={inputChangeHandler}
+        errorText={formState.inputValidities["email"]}
+        initialValue={userData.email}
+      />
+      <Input
+        id="about"
+        label="about"
+        icon="book"
+        placeholder="goswami"
+        onInputChange={inputChangeHandler}
+        errorText={formState.inputValidities["lastName"]}
+      />
+      {showSuccessMessage && <Text>Saved!</Text>}
+      {isLoading ? (
+        <ActivityIndicator
+          size={"small"}
+          color={colors.primary}
+          style={{ marginTop: 10 }}
         />
-        <Input
-          autoCaptalize="none"
-          id="firstName"
-          label="First name"
-          icon="user"
-          placeholder="ram"
-          onInputChange={inputChangeHandler}
-          errorText={formState.inputValidities["firstName"]}
-          initialValue={userData.lastName}
-        />
-        <Input
-          id="lastName"
-          label="Last name"
-          icon="user"
-          placeholder="goswami"
-          onInputChange={inputChangeHandler}
-          errorText={formState.inputValidities["lastName"]}
-          initialValue={userData.firstName}
-        />
-        <Input
-          id="email"
-          label="Email"
-          icon="mail"
-          placeholder="skg@gmail.com"
-          keyboardType="email-address"
-          onInputChange={inputChangeHandler}
-          errorText={formState.inputValidities["email"]}
-          initialValue={userData.email}
-        />
-        <Input
-          id="about"
-          label="about"
-          icon="book"
-          placeholder="goswami"
-          onInputChange={inputChangeHandler}
-          errorText={formState.inputValidities["lastName"]}
-        />
-        {showSuccessMessage && <Text>Saved!</Text>}
-        {isLoading ? (
-          <ActivityIndicator
-            size={"small"}
-            color={colors.primary}
-            style={{ marginTop: 10 }}
-          />
-        ) : (
-          <></>
-          // <SubmitButton
-          //   tittle="Save"
-          //   onPress={saveHandler}
-          //   style={{ marginTop: 20 }}
-          //   disabled={!!formState.formIsValid}
-          // />
-        )}
-        <SubmitButton
-          tittle="logout"
-          onPress={() => dispatch(userLogout())}
-          style={{ marginTop: 20 }}
-          color={colors.red}
-        />
-      </ScrollView>
+      ) : (
+        <></>
+        // <SubmitButton
+        //   tittle="Save"
+        //   onPress={saveHandler}
+        //   style={{ marginTop: 20 }}
+        //   disabled={!!formState.formIsValid}
+        // />
+      )}
+      <SubmitButton
+        tittle="logout"
+        onPress={() => dispatch(userLogout())}
+        style={{ marginTop: 20 }}
+        color={colors.red}
+      />
     </PageContainer>
   );
 };
 
 export default SettingScreen;
 
-const styles = StyleSheet.create({});
+

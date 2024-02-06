@@ -1,11 +1,9 @@
-import { Button, FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList } from "react-native";
 import React from "react";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { useSelector } from "react-redux";
 
 import { CustomHeaderButton, DataItem, PageContainer, PageTitle } from '../../components'
-
 
 const ChatListScreen = (props) => {
   const selectedUser = props.route?.params?.selectedUserId;
@@ -79,11 +77,3 @@ const ChatListScreen = (props) => {
 };
 
 export default ChatListScreen;
-
-const styles = StyleSheet.create({
-  text: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { TextInput } from "react-native-gesture-handler";
 import colors from "../../constants/colors";
 import { Feather } from "@expo/vector-icons";
+import styles from './Styles'
 
 const Input = (props) => {
   const [value, setValue] = useState(props.initialValue);
@@ -41,42 +42,3 @@ const Input = (props) => {
 };
 
 export default Input;
-
-const styles = StyleSheet.create({
-  inputContainer: {
-    width: "100%",
-    paddingHorizontal: 10,
-    paddingVertical: 15,
-    borderRadius: 5,
-    backgroundColor: colors.nearlyWhite,
-    flexDirection: "row",
-  },
-  icon: {
-    marginRight: 10,
-    color: colors.grey,
-  },
-  label: {
-    marginVertical: 8,
-    fontFamily: "bold",
-    letterSpacing: 0.3,
-
-    color: colors.textColor,
-  },
-  input: {
-    color: colors.textColor,
-    flex: 1,
-    fontFamily: "regular",
-
-    letterSpacing: 0.3,
-    paddingTop: 0,
-  },
-  errorContainer: {
-    marginTop: 5,
-  },
-  errorText: {
-    color: "red",
-    fontSize: 13,
-    fontFamily: "regular",
-    letterSpacing: 0.3,
-  },
-});

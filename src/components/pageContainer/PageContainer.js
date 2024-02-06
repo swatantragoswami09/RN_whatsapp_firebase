@@ -1,4 +1,5 @@
 import { StyleSheet, View } from "react-native";
+import styles from './Styles';
 
 const PageContainer = (props) => {
   return (
@@ -8,11 +9,6 @@ const PageContainer = (props) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 20,
-    flex: 1,
-  },
-});
+
 
 export default PageContainer;

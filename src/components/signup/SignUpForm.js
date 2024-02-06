@@ -1,20 +1,9 @@
 import {
   ActivityIndicator,
   Alert,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
 } from "react-native";
 import React, { useCallback, useReducer } from "react";
 import SubmitButton from "../submitButton/SubmitButton";
-import { validate } from "validate.js";
-import {
-  validateEmail,
-  validatePassword,
-  validateString,
-} from "../../utils/validationConstraints";
 import { validateInput } from "../../utils/actions/formActions";
 import { reducer } from "../../utils/reducers/formReducers";
 import { initialRegisterState } from "../../utils/initialState";
@@ -23,6 +12,8 @@ import colors from "../../constants/colors";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Input } from '../../components'
+import styles from './Styles'
+
 const SignUpForm = (props) => {
   const dispatch = useDispatch();
 
@@ -126,12 +117,4 @@ const SignUpForm = (props) => {
 
 export default SignUpForm;
 
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    flex: 1,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "flex-start",
-  },
-});
+

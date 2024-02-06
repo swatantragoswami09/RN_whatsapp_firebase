@@ -1,6 +1,7 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import colors from "../../constants/colors";
+import styles from './Styles'
 
 const SubmitButton = (props) => {
   console.log("props.disabled =>", props.disabled);
@@ -24,15 +25,3 @@ const SubmitButton = (props) => {
 };
 
 export default SubmitButton;
-
-const styles = StyleSheet.create({
-  button: {
-    backgroundColor: colors.primary,
-    width: "100%",
-    paddingHorizontal: 30,
-    paddingVertical: 10,
-    borderRadius: 30,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});

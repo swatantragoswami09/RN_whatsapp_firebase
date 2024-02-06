@@ -1,6 +1,6 @@
 import { Button, StyleSheet, Text, View } from "react-native";
 import React from "react";
-
+import styles from "./Styles";
 const ChatSettingsScreen = (props) => {
   return (
     <View style={styles.container}>
@@ -10,11 +10,3 @@ const ChatSettingsScreen = (props) => {
 };
 
 export default ChatSettingsScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});

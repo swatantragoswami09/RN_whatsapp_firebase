@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
-import Colors from "../../constants/colors";
+import { Text, View } from "react-native";
+import styles from './Styles'
 
 export default PageTitle = (props) => {
   return (
@@ -8,15 +8,3 @@ export default PageTitle = (props) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    marginBottom: 10,
-  },
-  text: {
-    fontSize: 28,
-    color: Colors.textColor,
-    fontFamily: "bold",
-    letterSpacing: 0.3,
-  },
-});

@@ -21,6 +21,7 @@ const MainNavigator = () => {
     const dbRef = ref(getDatabase(app));
     const userChatsRef = child(dbRef, `userChats/${userData.userId}`);
     const refs = [userChatsRef];
+
     onValue(userChatsRef, (querySnapshot) => {
       const chatIdsData = querySnapshot.val() || {};
       const chatIds = Object.values(chatIdsData);
@@ -60,6 +61,7 @@ const MainNavigator = () => {
       }
       console.log("chatsids=>", chatIds);
     });
+
     return () => {
       console.log("unsubsribing firebase listeners");
       refs.forEach((ref) => off(userChatsRef));

@@ -16,10 +16,8 @@ import { searchUsers } from "../../utils/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { setStoredUsers } from "../../store/userSlice";
 
-
 import { CustomHeaderButton, DataItem, PageContainer } from "../../components";
-
-
+import styles from './Styles'
 
 const NewChatScreen = (props) => {
   const dispatch = useDispatch();
@@ -38,7 +36,7 @@ const NewChatScreen = (props) => {
           </HeaderButtons>
         );
       },
-      headerTitle: "New Chat",
+      headerTitle: "New Chat123",
     });
   }, []);
 
@@ -69,7 +67,7 @@ const NewChatScreen = (props) => {
     props.navigation.navigate("ChatList", { selectedUserId: userId });
   return (
     <PageContainer>
-      <View style={styles.searhContainer}>
+      <View style={styles.searchContainer}>
         <FontAwesome name="search" size={24} color={colors.lightGrey} />
         <TextInput
           placeholder="Search"
@@ -130,28 +128,3 @@ const NewChatScreen = (props) => {
 
 export default NewChatScreen;
 
-const styles = StyleSheet.create({
-  searhContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: colors.extralightGrey,
-    height: 30,
-    marginVertical: 8,
-    paddingHorizontal: 8,
-    paddingVertical: 5,
-    borderRadius: 5,
-  },
-  searchBar: {
-    marginLeft: 8,
-    fontSize: 15,
-    width: "100%",
-  },
-  noResultsIcon: {
-    marginBottom: 20,
-  },
-  noResultsText: {
-    color: colors.textColor,
-    fontFamily: "regular",
-    letterSpacing: 0.3,
-  },
-});

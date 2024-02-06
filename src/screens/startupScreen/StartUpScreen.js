@@ -6,6 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch } from "react-redux";
 import { authentication, setDidTryAutoLogin } from "../../store/authSlice";
 import { getUserData } from "../../utils/actions/userActions";
+import styles from "./Styles";
 
 const StartUpScreen = () => {
   const dispatch = useDispatch();
@@ -41,4 +42,4 @@ const StartUpScreen = () => {
 
 export default StartUpScreen;
 
-const styles = StyleSheet.create({});
+

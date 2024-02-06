@@ -10,7 +10,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import AppNavigator from "./src/navigation/AppNavigator";
 import { Provider } from "react-redux";
 import { store } from "./src/store/store";
-
+import * as font from './src/utils/FontFamily'
 
 LogBox.ignoreAllLogs();
 // AsyncStorage.clear();
@@ -24,15 +24,15 @@ export default function App() {
     const prepare = async () => {
       try {
         await Font.loadAsync({
-          black: require("./src/assets/fonts/RobotoSlab-Black.ttf"),
-          bold: require("./src/assets/fonts/RobotoSlab-Bold.ttf"),
-          extraBold: require("./src/assets/fonts/RobotoSlab-ExtraBold.ttf"),
-          extraLight: require("./src/assets/fonts/RobotoSlab-ExtraLight.ttf"),
-          light: require("./src/assets/fonts/RobotoSlab-Light.ttf"),
-          medium: require("./src/assets/fonts/RobotoSlab-Medium.ttf"),
-          regular: require("./src/assets/fonts/RobotoSlab-Regular.ttf"),
-          semiBold: require("./src/assets/fonts/RobotoSlab-SemiBold.ttf"),
-          thin: require("./src/assets/fonts/RobotoSlab-Thin.ttf"),
+          black: font.BLACK,
+          bold: font.BOLD,
+          extraBold: font.EXTRA_BOLD,
+          extraLight: font.EXTRA_LIGHT,
+          light: font.LIGHT,
+          medium: font.MEDIUM,
+          regular: font.REGULAR,
+          semiBold: font.SEMIBOLD,
+          thin: font.THIN,
         });
       } catch (error) {
         console.log.error();

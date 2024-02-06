@@ -17,6 +17,8 @@ import {
 import { updateSignedInUserData } from "../../utils/actions/authActions";
 import { useDispatch } from "react-redux";
 import { updateLoggedInUserData } from "../../store/authSlice";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import styles from './Styles'
 
 const ProfileImage = (props) => {
   const dispatch = useDispatch();
@@ -82,28 +84,3 @@ const ProfileImage = (props) => {
 };
 
 export default ProfileImage;
-
-const styles = StyleSheet.create({
-  image: {
-    width: 120,
-    height: 130,
-    // marginLeft: 105,
-    marginTop: 20,
-    borderRadius: 120,
-    borderColor: colors.grey,
-    borderWidth: 2,
-  },
-  editIconContainer: {
-    position: "absolute",
-    bottom: 0,
-    // right: 0,
-    left: 198,
-    top: 125,
-    backgroundColor: Colors.grey,
-    borderRadius: 20,
-  },
-  loadingContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});

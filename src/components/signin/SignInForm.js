@@ -20,8 +20,9 @@ import { reducer } from "../../utils/reducers/formReducers";
 import { initialLoginState } from "../../utils/initialState";
 import { signIn } from "../../utils/actions/authActions";
 import { useDispatch } from "react-redux";
-
 import { Input } from '../'
+import styles from "./Styles";
+
 const SignInForm = (props) => {
   const dispatch = useDispatch();
   const [error, setError] = React.useState();
@@ -102,20 +103,3 @@ const SignInForm = (props) => {
 
 export default SignInForm;
 
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "flex-start",
-  },
-  linkContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-    marginVertical: 15,
-  },
-  link: {
-    forntFamily: "medium",
-    letterSpacing: 0.3,
-  },
-});

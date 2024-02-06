@@ -1,10 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
-import colors from "../../constants/colors";
 
 import { ProfileImage } from "../";
-
+import styles from "./Styles";
 const DataItem = (props) => {
   const { title, subTitle, image } = props;
 
@@ -27,26 +26,3 @@ const DataItem = (props) => {
 
 export default DataItem;
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    paddingVertical: 7,
-    borderBottomColor: colors.extralightGrey,
-    borderBottomWidth: 1,
-    alignItems: "center",
-    minHeight: 50,
-  },
-  textContainer: {
-    marginLeft: 15,
-  },
-  title: {
-    fontFamily: "medium",
-    fontSize: 16,
-    letterSpacing: 0.3,
-  },
-  subTitle: {
-    fontFamily: "regular",
-    color: colors.grey,
-    letterSpacing: 0.3,
-  },
-});
